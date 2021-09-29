@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
 
         String chosenName = "Алексей";
-        int chosenAge = 18;
+        int chosenAge = 112;
 
 // Рассчёт суммарного возраста для определённого имени.
         List<Student> simultaneousNames = STUDENTS
@@ -39,7 +39,8 @@ public class Main {
             System.out.println("Суммарный возраст для имени \"" + chosenName + "\": " + sum);
 
 // Получить SET, который содержит в себе только имена учеников.
-// После преобразования все дублированные значения в List будут просто игнорироваться, потому что Set не допускает дублирование значений.
+// После преобразования все дублированные значения в List будут просто игнорироваться,
+// потому что Set не допускает дублирование значений.
         List<String> listOfAllNames = STUDENTS
                 .stream()
                 .map(student -> student.getName())
@@ -49,6 +50,18 @@ public class Main {
         System.out.print("SET имён учеников: ");
             for (String name : set){
                         System.out.print(name + " ");
+            }
+
+// Узнать, содержит ли список хотя бы одного ученика,
+// у которого возраст больше заданного числа.
+        List<Student> overChosenAge = STUDENTS
+                .stream()
+                .filter(student -> student.getAge() > chosenAge)
+                .collect(Collectors.toList());
+            if (overChosenAge.size() >= 1) {
+                System.out.println("\nСписок содержит учеников, у которых возраст больше " + chosenAge);
+            } else {
+                System.out.println("\nСписок не содержит учеников, у которых возраст больше " + chosenAge);
             }
 
     }
