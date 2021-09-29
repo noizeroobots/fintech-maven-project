@@ -2,7 +2,6 @@ package ru.tinkoff;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Main {
 
@@ -73,11 +72,11 @@ public class Main {
 
 
 // Преобразовать список в Map, у которой ключ: Age, значение: object.
-        Map<Integer, Student> mapped4 = STUDENTS
+        Map<Integer, Student> mapped1 = STUDENTS
                 .stream()
                 .collect(Collectors.toMap(Student::getAge, student -> student));
         System.out.println("Собранный Map по условию ключ: Age и значение: Object:");
-        mapped4.forEach((k, v) -> System.out.println("Age: " + k + " => " + v));
+        mapped1.forEach((k, v) -> System.out.println("Age: " + k + " => " + v));
 
 
     }
