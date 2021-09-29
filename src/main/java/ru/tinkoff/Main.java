@@ -8,17 +8,17 @@ public class Main {
 
 
         private static final ArrayList<Student> STUDENTS = new ArrayList<>(){{
-            add(new Student("Николай", 68, 100));
-            add(new Student("Пётр", 53, 101));
-            add(new Student("Василий", 25, 102));
-            add(new Student("Михаил", 19, 103));
-            add(new Student("Алексей", 6, 104));
-            add(new Student("Николай", 86, 105));
-            add(new Student("Пётр", 35, 106));
-            add(new Student("Михаил", 111, 107));
-            add(new Student("Алексей", 22, 108));
-            add(new Student("Михаил", 1, 109));
-            add(new Student("Яков", 30, 110));
+            add(new Student("Николай", 68, 2021000));
+            add(new Student("Пётр", 53, 2021001));
+            add(new Student("Василий", 25, 2021002));
+            add(new Student("Михаил", 19, 2021003));
+            add(new Student("Алексей", 6, 2021004));
+            add(new Student("Николай", 86, 2021005));
+            add(new Student("Пётр", 35, 2021006));
+            add(new Student("Михаил", 111, 2021007));
+            add(new Student("Алексей", 22, 2021008));
+            add(new Student("Михаил", 1, 2021009));
+            add(new Student("Яков", 30, 2021010));
         }};
 
     public static void main(String[] args) {
@@ -63,6 +63,22 @@ public class Main {
             } else {
                 System.out.println("\nСписок не содержит учеников, у которых возраст больше " + chosenAge);
             }
+
+// Преобразовать список в Map, у которой ключ: ID, значение: name.
+    Map<Integer, String> mapped = STUDENTS
+        .stream()
+        .collect(Collectors.toMap(Student::getId, Student::getName));
+        System.out.println("Собранный Map по условию ключ: ID и значение: Name:");
+        mapped.forEach((k, v) -> System.out.println("ID: " + k + " => " + "Name: " + v));
+
+
+// Преобразовать список в Map, у которой ключ: Age, значение: object.
+        Map<Integer, Student> mapped4 = STUDENTS
+                .stream()
+                .collect(Collectors.toMap(Student::getAge, student -> student));
+        System.out.println("Собранный Map по условию ключ: Age и значение: Object:");
+        mapped4.forEach((k, v) -> System.out.println("Age: " + k + " => " + v));
+
 
     }
 }
